@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { Image, ImageBackground, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View, ImageProps } from 'react-native';
+import { Image, ImageBackground, Platform, StyleSheet, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { ViewPropTypes, ImagePropTypes } from 'deprecated-react-native-prop-types';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import Video from 'react-native-video'; // eslint-disable-line
@@ -603,10 +603,11 @@ const VideoPropTypes = {
     style: PropTypes.any
 };
 
+
 VideoPlayer.propTypes = {
   video: PropTypes.shape(VideoPropTypes.source).isRequired,
-  thumbnail: ImageProps['source'],
-  endThumbnail: ImageProps['source'],
+  thumbnail: ImagePropTypes.source,
+  endThumbnail: ImagePropTypes.source,
   videoWidth: PropTypes.number,
   videoHeight: PropTypes.number,
   duration: PropTypes.number,
