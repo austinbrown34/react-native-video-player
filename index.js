@@ -593,8 +593,18 @@ export default class VideoPlayer extends Component {
   }
 }
 
+const VideoPropTypes = {
+    source: PropTypes.shape({
+        uri: PropTypes.string,
+        headers: PropTypes.object,
+        type: PropTypes.string
+    }),
+    resizeMode: PropTypes.oneOf(['stretch', 'contain', 'cover', 'none', 'repeat']),
+    style: PropTypes.any
+};
+
 VideoPlayer.propTypes = {
-  video: Video.propTypes.source,
+  video: PropTypes.shape(VideoPropTypes.source).isRequired,
   thumbnail: ImageProps['source'],
   endThumbnail: ImageProps['source'],
   videoWidth: PropTypes.number,
@@ -609,7 +619,7 @@ VideoPlayer.propTypes = {
   disableControlsAutoHide: PropTypes.bool,
   disableFullscreen: PropTypes.bool,
   loop: PropTypes.bool,
-  resizeMode: Video.propTypes.resizeMode,
+  resizeMode: VideoPropTypes.resizeMode,
   hideControlsOnStart: PropTypes.bool,
   endWithThumbnail: PropTypes.bool,
   disableSeek: PropTypes.bool,
@@ -617,7 +627,7 @@ VideoPlayer.propTypes = {
   fullScreenOnLongPress: PropTypes.bool,
   customStyles: PropTypes.shape({
     wrapper: ViewPropTypesVar.style,
-    video: Video.propTypes.style,
+    video: VideoPropTypes.style,
     videoWrapper: ViewPropTypesVar.style,
     controls: ViewPropTypesVar.style,
     playControl: ViewPropTypesVar.style,
